@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Block Scheduling Project</title>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+
+    <style>
+        #container{
+            width: 80%;
+            height: 100%;
+            border: solid 1px #444;
+        }
+        #outGrid{
+            border: 0.5px solid black;
+            width: 80px;
+            height: 500px;
+            padding: 0;
+            margin: 0;
+        }
+        #grid td{
+            text-align:center;
+            border: 1px dashed black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Insert your content here -->
+    <div id="container">
+        <!-- Create one row grid of 7 columns -->
+        <table id="grid">
+            <tr>
+                <td>Sunday</td>
+                <td>Monday</td>
+                <td>Tuesday</td>
+                <td>Wednesday</td>
+                <td>Thursday</td>
+                <td>Friday</td>
+                <td>Saturday</td>
+            </tr>
+            <tr>
+                <td><div id="outGrid" class="sun"></div></td>
+                <td><div id="outGrid" class="mon"></div></td>
+                <td><div id="outGrid" class="tue"></div></td>
+                <td><div id="outGrid" class="wed"></div></td>
+                <td><div id="outGrid" class="thu"></div></td>
+                <td><div id="outGrid" class="fri"></div></td>
+                <td><div id="outGrid" class="sat"></div></td>
+            </tr>
+        <br />
+        <label for="event">Event</label>
+        <input type="text" id="event" name="event" />
+        <br />
+        
+        
+        
+        Make new event.
+        Give a title.
+        Choose Color.
+        Create block.
+        
+        Block (resizable, draggable, snappable)
+            resizable (vertical only if poss)
+            snappable (snap to other snappables, snap to parent container)
+            
+        
+    </div>
+</body>
+</html>
