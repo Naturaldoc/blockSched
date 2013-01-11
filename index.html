@@ -4,12 +4,16 @@
     <title>Block Scheduling Project</title>
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="farbtastic.js"></script>
+    
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-
+	<link rel="stylesheet" href="farbtastic.css" type="text/css" />
+	
     <style>
         #container{
-            width: 80%;
+            width: 650px;
             height: 100%;
+            margin: 0 auto;
             border: solid 1px #444;
         }
         #outGrid{
@@ -23,48 +27,88 @@
             text-align:center;
             border: 1px dashed black;
         }
+        #lftPanel{
+			width: 450px;
+			margin: 0 auto;
+			align: left;
+		}
+		#farbtastic, #wheel{
+			margin: 0 auto;
+		}
+		#rtPanel{
+			width: 100%;
+			margin: 0 auto;
+		}
+		#midPanel{
+			width: 100%;
+			min-height: 83px;
+			border:1px solid black;
+		}
+		#block{
+			width:80px;
+			height: 80px;
+			border: 1px solid black;
+			float: left;
+		}
     </style>
+    
+    <script>
+		$(document).ready(function(){
+			$('#btnCreate').on('click', function(e){
+				$('<div id="block" />').draggable( {snap:true} ).resizable({containment:'#outGrid'}).appendTo('#midPanel');
+				$('outGrid').droppable({
+					droppable: function(event, ui){
+						$(this).find('outGrid');
+					}
+				});
+			});
+			$('#colorpicker').farbtastic('#block'); //farbtastic('string argument') returns color value as hex
+		});
+    </script>
 </head>
 <body>
     <!-- Insert your content here -->
     <div id="container">
-        <!-- Create one row grid of 7 columns -->
-        <table id="grid">
-            <tr>
-                <td>Sunday</td>
-                <td>Monday</td>
-                <td>Tuesday</td>
-                <td>Wednesday</td>
-                <td>Thursday</td>
-                <td>Friday</td>
-                <td>Saturday</td>
-            </tr>
-            <tr>
-                <td><div id="outGrid" class="sun"></div></td>
-                <td><div id="outGrid" class="mon"></div></td>
-                <td><div id="outGrid" class="tue"></div></td>
-                <td><div id="outGrid" class="wed"></div></td>
-                <td><div id="outGrid" class="thu"></div></td>
-                <td><div id="outGrid" class="fri"></div></td>
-                <td><div id="outGrid" class="sat"></div></td>
-            </tr>
-        <br />
-        <label for="event">Event</label>
-        <input type="text" id="event" name="event" />
-        <br />
-        
-        
-        
-        Make new event.
-        Give a title.
-        Choose Color.
-        Create block.
-        
-        Block (resizable, draggable, snappable)
-            resizable (vertical only if poss)
-            snappable (snap to other snappables, snap to parent container)
-            
-        
+
+		<div id="topPanel">
+			<form>
+				<!-- Event Title -->
+				<label for="event">Event Name</label>
+				<input type="text" id="event" name="event" />&nbsp;&nbsp;
+				<input type="button" id="btnCreate" name="btnCreate" value="Create Block" />
+				<br />
+				
+				<!-- Create color picker -->
+				<!--<input type="text" id="color" name="color" />-->
+				<div id="colorpicker"></div>
+			</form>
+		</div>
+		
+		<div id="midPanel"></div>
+		
+		<div id="bottomPanel">
+			<!-- Create one row grid of 7 columns -->
+			<table id="grid">
+				<tr>
+					<td>Sun</td>
+					<td>Mon</td>
+					<td>Tue</td>
+					<td>Wed</td>
+					<td>Thu</td>
+					<td>Fri</td>
+					<td>Sat</td>
+				</tr>
+				<tr>
+					<td><div id="outGrid" class="sun"></div></td>
+					<td><div id="outGrid" class="mon"></div></td>
+					<td><div id="outGrid" class="tue"></div></td>
+					<td><div id="outGrid" class="wed"></div></td>
+					<td><div id="outGrid" class="thu"></div></td>
+					<td><div id="outGrid" class="fri"></div></td>
+					<td><div id="outGrid" class="sat"></div></td>
+				</tr>
+			</table>
+		</div>
     </div>
 </body>
 </html>
